@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_grey"
+            android:title="@string/home" />
+    </group>
+    <group>
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/message"
+            android:title="@string/news" />
+    </group>
+    <group>
+        <item
+            android:id="@+id/nav_subscription"
+            android:icon="@drawable/home_grey"
+            android:title="@string/subscription" />
+    </group>
+    <group>
+        <item
+            android:id="@+id/nav_assignment"
+            android:icon="@drawable/home_grey"
+            android:title="@string/assignment" />
+    </group>
+    <group>
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/home_grey"
+            android:title="@string/settings" />
+    </group>
+
+
+</menu>

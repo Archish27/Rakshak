@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.markdevelopers.rakshak.ui.widgets.BaseTextView
+            style="@style/PrimaryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/sign_up"
+            android:textColor="@color/colorPrimary"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.markdevelopers.rakshak.ui.widgets.BaseEditText
+                    android:id="@+id/etFName"
+                    style="@style/BaseEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/first_name" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.markdevelopers.rakshak.ui.widgets.BaseEditText
+                    android:id="@+id/etLName"
+                    style="@style/BaseEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/last_name" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.markdevelopers.rakshak.ui.widgets.BaseEditText
+                android:id="@+id/etEmail"
+                style="@style/BaseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.markdevelopers.rakshak.ui.widgets.BaseEditText
+                android:id="@+id/etPhoneNo"
+                style="@style/BaseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/mobile_number"
+                android:inputType="phone" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.markdevelopers.rakshak.ui.widgets.BaseEditText
+                android:id="@+id/etPassword"
+                style="@style/BaseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+
+        <com.markdevelopers.rakshak.ui.widgets.BaseTextView
+            style="@style/PrimaryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/who_are_you" />
+
+        <RadioGroup
+            android:id="@+id/rgCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.markdevelopers.rakshak.ui.widgets.BaseRadioButton
+                android:id="@+id/rbUser"
+                style="@style/BaseRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user" />
+
+            <com.markdevelopers.rakshak.ui.widgets.BaseRadioButton
+                android:id="@+id/rbWorker"
+                style="@style/BaseRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/worker" />
+
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/workerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.markdevelopers.rakshak.ui.widgets.BaseTextView
+                style="@style/PrimaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/state" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/sState"
+                style="@style/SecondaryText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:entries="@array/state">
+
+            </android.support.v7.widget.AppCompatSpinner>
+
+            <com.markdevelopers.rakshak.ui.widgets.BaseTextView
+                style="@style/PrimaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/city" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/sCity"
+                style="@style/SecondaryText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+            </android.support.v7.widget.AppCompatSpinner>
+
+        </LinearLayout>
+
+
+        <com.markdevelopers.rakshak.ui.widgets.BaseButton
+            android:id="@+id/bSignUp"
+            style="@style/BaseButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/sign_up" />
+    </LinearLayout>
+</ScrollView>

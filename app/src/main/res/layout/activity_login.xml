@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:padding="16dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <com.markdevelopers.rakshak.ui.widgets.BaseTextView
+            style="@style/PrimaryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/login"
+            android:textColor="@color/colorPrimary"
+            android:textSize="28sp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.markdevelopers.rakshak.ui.widgets.BaseEditText
+                android:id="@+id/etMobileNo"
+                style="@style/BaseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/mobile_number"
+                android:inputType="phone" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.markdevelopers.rakshak.ui.widgets.BaseEditText
+                android:id="@+id/etPassword"
+                style="@style/BaseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.markdevelopers.rakshak.ui.widgets.BaseTextView
+                android:id="@+id/tvCreate"
+                style="@style/SecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:text="@string/sign_up" />
+
+            <com.markdevelopers.rakshak.ui.widgets.BaseTextView
+                android:id="@+id/tvForgotPassword"
+                style="@style/SecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:text="@string/forgot_password" />
+        </RelativeLayout>
+
+        <com.markdevelopers.rakshak.ui.widgets.BaseButton
+
+            android:id="@+id/bLogin"
+            style="@style/BaseButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/login" />
+    </LinearLayout>
+
+</ScrollView>

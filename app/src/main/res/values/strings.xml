@@ -1,0 +1,96 @@
+<resources>
+    <string name="app_name">Rakshak</string>
+    <!-- Custom Fonts -->
+    <string name="font_name_montserrat">montserrat</string>
+    <string name="font_name_montserrat_bold">montserrat_bold</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">FORGOT PASSWORD</string>
+    <string name="password">Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="set_password">Set Password</string>
+    <string name="set_your_password">SET YOUR PASSWORD</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="confirm">Confirm</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="logout">Logout</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Network error message-->
+    <string name="unknown_error">Some unknown error occurred.</string>
+    <string name="network_error">Please check your internet connection.</string>
+    <string name="system_error">Something went wrong. Please try again later.</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="user">User</string>
+    <string name="worker">Worker</string>
+    <string name="who_are_you">Who are you?</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="please_wait">Please wait...</string>
+    <string-array name="state">
+        <item>Select State</item>
+        <item>Andaman and Nicobar Islands</item>
+        <item>Andhra Pradesh</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chandigarh</item>
+        <item>Chhattisgarh</item>
+        <item>Delhi</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu &amp; Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Orissa</item>
+        <item>Pondicherry</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Tamil Nadu</item>
+        <item>Tripura</item>
+        <item>Uttar Pradesh</item>
+        <item>Uttaranchal</item>
+        <item>West Bengal</item>
+    </string-array>
+    <string-array name="category">
+        <item>Select category</item>
+        <item>General Information</item>
+        <item>Missing</item>
+        <item>Suspsious Activity</item>
+    </string-array>
+    <string name="departmentPrompt">Please select department</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="subscription">Subscription</string>
+    <string name="news">News</string>
+    <string name="assignment">Assignment</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="latest_nes">Latest News</string>
+    <string name="updates">Updates</string>
+    <string name="description">Description</string>
+    <string name="image">Image</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_from_gallery">Choose from gallery</string>
+    <string name="submit">Submit</string>
+    <string name="add">Add</string>
+    <string name="add_update">Add update</string>
+
+
+</resources>
