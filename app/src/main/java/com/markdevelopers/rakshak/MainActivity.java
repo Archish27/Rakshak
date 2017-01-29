@@ -122,6 +122,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 break;
 
             case R.id.nav_settings:
+
                 break;
         }
 
