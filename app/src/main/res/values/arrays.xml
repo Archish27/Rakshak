@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vibrateSM">
+
+        <item name="defaultVibrateSM">@string/Default</item>
+        <item name="short">@string/Short</item>
+        <item name="long">@string/Long</item>
+        <item name="off">@string/Off</item>
+    </string-array>
+    <string-array name="vibrateSMValues">
+
+        <item name="defaultVibrateSM">@string/One</item>
+        <item name="short">@string/Two</item>
+        <item name="long">@string/Three</item>
+        <item name="off">@string/Four</item>
+    </string-array>
+
+</resources>

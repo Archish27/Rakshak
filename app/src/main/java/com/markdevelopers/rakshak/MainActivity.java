@@ -25,6 +25,7 @@ import com.markdevelopers.rakshak.data.local.SharedPreferenceManager;
 import com.markdevelopers.rakshak.data.remote.models.UserResponse;
 import com.markdevelopers.rakshak.data.repository.UserRepository;
 import com.markdevelopers.rakshak.news.NewsFeedActivity;
+import com.markdevelopers.rakshak.ngos.NgoActivity;
 import com.markdevelopers.rakshak.subscriptions.SubscriptionsActivity;
 
 /***
@@ -57,7 +58,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             LoginPresenter loginPresenter = new LoginPresenter(userRepository, this);
             loginPresenter.logout(new SharedPreferenceManager(getApplicationContext()).getAccessToken());
             showProgressDialog();
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -72,6 +72,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 //                getSupportFragmentManager().beginTransaction();
 //        fragmentTransaction.replace(R.id.fragment_container, fragment);
 //        fragmentTransaction.commit();
+        HomeFragment fragment = new HomeFragment();
+        android.support.v4.app.FragmentTransaction fragmentTransaction =
+                getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -121,8 +127,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 startActivity(assignment);
                 break;
 
+            case R.id.nav_ngo:
+                Intent ngo = new Intent(MainActivity.this, NgoActivity.class);
+                startActivity(ngo);
+                break;
             case R.id.nav_settings:
-
+                Intent settings = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(settings);
                 break;
         }
 

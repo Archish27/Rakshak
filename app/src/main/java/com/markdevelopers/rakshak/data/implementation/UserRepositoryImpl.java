@@ -3,6 +3,7 @@ package com.markdevelopers.rakshak.data.implementation;
 
 import com.markdevelopers.rakshak.data.remote.UserRestService;
 import com.markdevelopers.rakshak.data.remote.models.CityWrapper;
+import com.markdevelopers.rakshak.data.remote.models.HomeWrapper;
 import com.markdevelopers.rakshak.data.remote.models.UserResponse;
 import com.markdevelopers.rakshak.data.repository.UserRepository;
 
@@ -64,8 +65,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Observable<UserResponse> setDoctorCategory(String accessToken, String gender, String dob, String specialist, String qualification) {
-        return userRestService.setDoctorCategory(accessToken, gender, dob, specialist, qualification);
+    public Observable<HomeWrapper> getHomeData(String accessToken) {
+        return userRestService.getHomeData(accessToken);
     }
 
 

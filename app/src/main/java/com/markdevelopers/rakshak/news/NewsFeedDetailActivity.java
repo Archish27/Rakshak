@@ -64,7 +64,7 @@ public class NewsFeedDetailActivity extends AppCompatActivity implements OnMapRe
             ivSeverity.setImageResource(R.drawable.mediumdanger);
         else if (severity > 51 && severity <= 75)
             ivSeverity.setImageResource(R.drawable.highdanger);
-        else if (severity > 76)
+        else if (severity > 75)
             ivSeverity.setImageResource(R.drawable.veryhighdanger);
     }
 

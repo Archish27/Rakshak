@@ -11,13 +11,13 @@ public class UserResponse implements Parcelable {
     boolean success;
     String message;
     String accessToken;
-    int category;
+    int role;
 
-    public UserResponse(boolean success, String message, String accessToken, int category) {
+    public UserResponse(boolean success, String message, String accessToken, int role) {
         this.success = success;
         this.message = message;
         this.accessToken = accessToken;
-        this.category = category;
+        this.role = role;
     }
 
     public boolean isSuccess() {
@@ -25,11 +25,11 @@ public class UserResponse implements Parcelable {
     }
 
     public int getCategory() {
-        return category;
+        return role;
     }
 
     public void setCategory(int category) {
-        this.category = category;
+        this.role = category;
     }
 
     public String getAccessToken() {

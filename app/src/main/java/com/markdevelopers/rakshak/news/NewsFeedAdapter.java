@@ -13,6 +13,7 @@ import com.markdevelopers.rakshak.data.remote.models.NewsFeed;
 import com.markdevelopers.rakshak.ui.widgets.BaseTextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -59,7 +60,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
             holder.ivSeverity.setImageResource(R.drawable.mediumdanger);
         else if (severity > 51 && severity <= 75)
             holder.ivSeverity.setImageResource(R.drawable.highdanger);
-        else if (severity > 76)
+        else if (severity > 75)
             holder.ivSeverity.setImageResource(R.drawable.veryhighdanger);
     }
 
@@ -113,6 +114,57 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
         }
 
     }
+    public void animateTo(List<NewsFeed> models) {
+        applyAndAnimateRemovals(models);
+        applyAndAnimateAdditions(models);
+        applyAndAnimateMovedItems(models);
+    }
+
+    private void applyAndAnimateRemovals(List<NewsFeed> newModels) {
+        for (int i = data.size() - 1; i >= 0; i--) {
+            final NewsFeed model = data.get(i);
+            if (!newModels.contains(model)) {
+                removeItem(i);
+            }
+        }
+    }
+
+    private void applyAndAnimateAdditions(List<NewsFeed> newModels) {
+        for (int i = 0, count = newModels.size(); i < count; i++) {
+            final NewsFeed model = newModels.get(i);
+            if (!data.contains(model)) {
+                addItem(i, model);
+            }
+        }
+    }
+
+    private void applyAndAnimateMovedItems(List<NewsFeed> newModels) {
+        for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
+            final NewsFeed model = newModels.get(toPosition);
+            final int fromPosition = data.indexOf(model);
+            if (fromPosition >= 0 && fromPosition != toPosition) {
+                moveItem(fromPosition, toPosition);
+            }
+        }
+    }
+
+    public NewsFeed removeItem(int position) {
+        final NewsFeed model = data.remove(position);
+        notifyItemRemoved(position);
+        return model;
+    }
+
+    public void addItem(int position, NewsFeed model) {
+        data.add(position, model);
+        notifyItemInserted(position);
+    }
+
+    public void moveItem(int fromPosition, int toPosition) {
+        final NewsFeed model = data.remove(fromPosition);
+        data.add(toPosition, model);
+        notifyItemMoved(fromPosition, toPosition);
+    }
+
 
 
 }

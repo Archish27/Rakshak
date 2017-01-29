@@ -2,6 +2,8 @@ package com.markdevelopers.rakshak.data.remote;
 
 import com.markdevelopers.rakshak.data.remote.models.AssignmentWrapper;
 import com.markdevelopers.rakshak.data.remote.models.NewsFeedWrapper;
+import com.markdevelopers.rakshak.data.remote.models.NgoDetail;
+import com.markdevelopers.rakshak.data.remote.models.NgoWrapper;
 import com.markdevelopers.rakshak.data.remote.models.SubscribeWrapper;
 import com.markdevelopers.rakshak.data.remote.models.UpdateWrapper;
 import com.markdevelopers.rakshak.data.remote.models.UserResponse;
@@ -40,6 +42,22 @@ public interface NewsFeedRestService {
     @FormUrlEncoded
     @POST("disaster/assignment")
     Observable<AssignmentWrapper> getAssignments(@Field("accessToken") String accessToken);
+
+    @FormUrlEncoded
+    @POST("ngo/show")
+    Observable<NgoWrapper> getNgos(@Field("accessToken") String accessToken);
+
+    @FormUrlEncoded
+    @POST("ngo/show/mission")
+    Observable<NgoDetail> getNgoMission(@Field("accessToken") String accessToken, @Field("id") int id);
+
+    @FormUrlEncoded
+    @POST("ngo/show/stories")
+    Observable<NgoDetail> getNgoStories(@Field("accessToken") String accessToken, @Field("id") int id);
+
+    @FormUrlEncoded
+    @POST("ngo/show/contact")
+    Observable<NgoDetail> getNgoContact(@Field("accessToken") String accessToken, @Field("id") int id);
 
     @Multipart
     @POST("disaster/update/new")

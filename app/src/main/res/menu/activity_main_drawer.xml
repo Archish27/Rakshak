@@ -16,19 +16,25 @@
     <group>
         <item
             android:id="@+id/nav_subscription"
-            android:icon="@drawable/home_grey"
+            android:icon="@drawable/subscribe"
             android:title="@string/subscription" />
     </group>
     <group>
         <item
             android:id="@+id/nav_assignment"
-            android:icon="@drawable/home_grey"
+            android:icon="@drawable/work"
             android:title="@string/assignment" />
     </group>
     <group>
         <item
+            android:id="@+id/nav_ngo"
+            android:icon="@drawable/teamwork"
+            android:title="@string/ngo" />
+    </group>
+    <group>
+        <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/home_grey"
+            android:icon="@drawable/settings"
             android:title="@string/settings" />
     </group>
 

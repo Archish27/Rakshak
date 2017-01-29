@@ -208,7 +208,9 @@ public class AssignmentAddActivity extends BaseActivity implements AssignmentCon
                     Uri selectedImageGallery = data.getData();
                     fImage.setVisibility(View.VISIBLE);
                     path = getRealPathFromURI(selectedImageGallery);
-                    ivImage.setImageURI(selectedImageGallery);
+                    Picasso.with(getApplicationContext()).load(selectedImageGallery).fit().into(ivImage);
+                    fImage.setVisibility(View.VISIBLE);
+
             }
 
         }

@@ -2,6 +2,7 @@ package com.markdevelopers.rakshak.data.remote;
 
 
 import com.markdevelopers.rakshak.data.remote.models.CityWrapper;
+import com.markdevelopers.rakshak.data.remote.models.HomeWrapper;
 import com.markdevelopers.rakshak.data.remote.models.UserResponse;
 
 import retrofit2.http.Field;
@@ -88,6 +89,9 @@ public interface UserRestService {
     @POST("auth/logout")
     Observable<UserResponse> logout(@Field("accessToken") String accessToken);
 
+    @FormUrlEncoded
+    @POST("feed/show")
+    Observable<HomeWrapper> getHomeData(@Field("accessToken") String accessToken);
 
     //TODO Login "auth/login" succes token true false
 }

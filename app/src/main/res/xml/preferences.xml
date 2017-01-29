@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:defaultValue="false"
+        android:dialogMessage="@string/muteMessage"
+        android:dialogTitle="@string/mute"
+        android:disableDependentsState="true"
+        android:key="mute_all"
+        android:summary="@string/muteMessage"
+        android:title="@string/mute" />
+
+    <PreferenceCategory
+        android:key="sm_notify"
+        android:title="@string/smNotification">
+        <RingtonePreference
+            android:dependency="mute_all"
+            android:dialogMessage="@string/smNotificationMessage"
+            android:dialogTitle="@string/smNotificationTitle"
+            android:key="sm_notification_ringtone"
+            android:summary="@string/smNotificationMessage"
+            android:title="@string/smNotificationTitle" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:dependency="mute_all"
+            android:entries="@array/vibrateSM"
+            android:entryValues="@array/vibrateSMValues"
+            android:key="vibrate_sm"
+            android:summary="@string/smVibrateMessage"
+            android:title="@string/smVibrateTitle" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="reset_default"
+        android:title="@string/defaults">
+
+
+        <Preference
+            android:key="reset_default_list"
+            android:summary="@string/resetMessage"
+            android:title="@string/resetTitle" />
+
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

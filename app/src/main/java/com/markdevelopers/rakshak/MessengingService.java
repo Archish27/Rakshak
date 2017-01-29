@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.markdevelopers.rakshak.news.NewsFeedActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -52,12 +53,13 @@ public class MessengingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
+        if (remoteMessage.getData().size() > 0) {
 
-
-        try {
-            JSONObject json = new JSONObject(remoteMessage.getData().toString());
-            sendPushNotification(json);
-        } catch (Exception e) {
+            try {
+                JSONObject json = new JSONObject(remoteMessage.getData().toString());
+                sendPushNotification(json);
+            } catch (Exception e) {
+            }
         }
     }
 
@@ -102,12 +104,14 @@ public class MessengingService extends FirebaseMessagingService {
             NotificationManager mNotificationManager = new NotificationManager(getApplicationContext());
 
             //creating an intent for the notification
-            Intent messageIntent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent messageIntent = new Intent(getApplicationContext(), NewsFeedActivity.class);
             messageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
             String title = data.getString("title");
             String message = data.getString("message");
-            mNotificationManager.showMessageNotification(title, message, messageIntent);
+            String status = data.getString("status");
+            String did = data.getString("did");
+            mNotificationManager.showMessageNotification(title, message, messageIntent, status, did);
         } catch (Exception e) {
 
         }

@@ -4,6 +4,8 @@ package com.markdevelopers.rakshak.data.implementation;
 import com.markdevelopers.rakshak.data.remote.NewsFeedRestService;
 import com.markdevelopers.rakshak.data.remote.models.AssignmentWrapper;
 import com.markdevelopers.rakshak.data.remote.models.NewsFeedWrapper;
+import com.markdevelopers.rakshak.data.remote.models.NgoDetail;
+import com.markdevelopers.rakshak.data.remote.models.NgoWrapper;
 import com.markdevelopers.rakshak.data.remote.models.SubscribeWrapper;
 import com.markdevelopers.rakshak.data.remote.models.UpdateWrapper;
 import com.markdevelopers.rakshak.data.remote.models.UserResponse;
@@ -53,8 +55,28 @@ public class NewsFeedRepositoryImpl implements NewsFeedRepository {
     }
 
     @Override
-    public Observable<UserResponse> setPost(String accessToken, String title, String description, RequestBody postimage,int did) {
-        return newsFeedRestService.setNewsPost(accessToken, title, description, postimage,did);
+    public Observable<NgoWrapper> getNgos(String accessToken) {
+        return newsFeedRestService.getNgos(accessToken);
+    }
+
+    @Override
+    public Observable<UserResponse> setPost(String accessToken, String title, String description, RequestBody postimage, int did) {
+        return newsFeedRestService.setNewsPost(accessToken, title, description, postimage, did);
+    }
+
+    @Override
+    public Observable<NgoDetail> getNgoMission(String accessToken, int id) {
+        return newsFeedRestService.getNgoMission(accessToken, id);
+    }
+
+    @Override
+    public Observable<NgoDetail> getNgoStories(String accessToken, int id) {
+        return newsFeedRestService.getNgoStories(accessToken, id);
+    }
+
+    @Override
+    public Observable<NgoDetail> getNgoContact(String accessToken, int id) {
+        return newsFeedRestService.getNgoContact(accessToken, id);
     }
 
 

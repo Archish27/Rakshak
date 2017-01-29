@@ -1,6 +1,7 @@
 package com.markdevelopers.rakshak.data.repository;
 
 import com.markdevelopers.rakshak.data.remote.models.CityWrapper;
+import com.markdevelopers.rakshak.data.remote.models.HomeWrapper;
 import com.markdevelopers.rakshak.data.remote.models.UserResponse;
 
 import rx.Observable;
@@ -44,11 +45,7 @@ public interface UserRepository {
                                                  String hpincode,
                                                  String hstate);
 
-    Observable<UserResponse> setDoctorCategory(String accessToken,
-                                               String gender,
-                                               String dob,
-                                               String specialist,
-                                               String qualification);
+    Observable<HomeWrapper> getHomeData(String accessToken);
 
 
     Observable<UserResponse> setLogin(String fcm_token, String phoneno, String password);
