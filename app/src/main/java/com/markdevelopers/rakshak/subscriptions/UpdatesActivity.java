@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import com.markdevelopers.rakshak.R;
 import com.markdevelopers.rakshak.common.BaseActivity;
@@ -28,6 +29,14 @@ public class UpdatesActivity extends BaseActivity implements UpdateContract.Upda
     public void onNetworkException(Throwable e) {
         super.onNetworkException(e);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +51,9 @@ public class UpdatesActivity extends BaseActivity implements UpdateContract.Upda
     }
 
     private void initViews() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         rvUpdates = (RecyclerView) findViewById(R.id.rvUpdates);
         rvUpdates.setHasFixedSize(true);
         rvUpdates.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));

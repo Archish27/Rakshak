@@ -17,7 +17,7 @@ import android.widget.TextView;
  */
 public class Config {
     public static final String IMAGE_DIRECTORY_NAME = "Rakshak";
-    public static final String BASE_URL = "http://192.168.43.97:1541/";
+    public static final String BASE_URL = "http://rakshak.markdevelopers.com/public/";
 
 
     public static void changeFontInViewGroup(ViewGroup viewGroup, int fontType) {

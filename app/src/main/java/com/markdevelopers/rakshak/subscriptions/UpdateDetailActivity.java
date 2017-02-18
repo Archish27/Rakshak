@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -24,6 +25,15 @@ public class UpdateDetailActivity extends AppCompatActivity {
     ImageView ivImage;
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_details);
@@ -39,6 +49,9 @@ public class UpdateDetailActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         getSupportActionBar().setTitle(name);
         tvTitle = (BaseTextView) findViewById(R.id.tvTitle);
         tvDescription = (BaseTextView) findViewById(R.id.tvDescription);

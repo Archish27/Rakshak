@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import com.markdevelopers.rakshak.R;
 import com.markdevelopers.rakshak.common.BaseActivity;
@@ -28,6 +29,14 @@ public class SubscriptionsActivity extends BaseActivity implements SubscriptionA
     SubscriptionPresenter newsFeedActivityPresenter;
     SwipeRefreshLayout swipeRefreshLayout;
     SubscriptionAdapter adapter;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +50,9 @@ public class SubscriptionsActivity extends BaseActivity implements SubscriptionA
 
 
     private void initViews() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         rvNewsFeed = (RecyclerView) findViewById(R.id.rvNews);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.srlNews);
         rvNewsFeed.setHasFixedSize(true);
@@ -69,6 +81,7 @@ public class SubscriptionsActivity extends BaseActivity implements SubscriptionA
             newsFeeds.add(subscribe);
         }
         adapter = new SubscriptionAdapter(newsFeeds, this);
+
         rvNewsFeed.setAdapter(adapter);
     }
 

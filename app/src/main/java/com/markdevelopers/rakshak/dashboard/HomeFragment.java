@@ -49,7 +49,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
+                homePresenter.fetchHomeData(new SharedPreferenceManager(getActivity().getApplicationContext()).getAccessToken());
             }
         });
         return view;
@@ -67,6 +67,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
         }
         HomeAdapter homeAdapter = new HomeAdapter(homes, this);
         rvHome.setAdapter(homeAdapter);
+        if(swipeRefreshLayout.isRefreshing())
+            swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override

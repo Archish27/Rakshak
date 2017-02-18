@@ -36,6 +36,15 @@ public class NewsFeedActivity extends BaseActivity implements NewsFeedAdapter.Li
     ArrayList<NewsFeed> newsFeeds;
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
@@ -64,11 +73,13 @@ public class NewsFeedActivity extends BaseActivity implements NewsFeedAdapter.Li
     }
 
     private void initViews() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         rvNewsFeed = (RecyclerView) findViewById(R.id.rvNews);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.srlNews);
         rvNewsFeed.setHasFixedSize(true);
         rvNewsFeed.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

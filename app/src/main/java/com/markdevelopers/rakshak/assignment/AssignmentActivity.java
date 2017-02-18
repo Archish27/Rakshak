@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import com.markdevelopers.rakshak.R;
 import com.markdevelopers.rakshak.common.BaseActivity;
@@ -34,6 +35,14 @@ public class AssignmentActivity extends BaseActivity implements AssignmentContra
     public void onNetworkException(Throwable e) {
         super.onNetworkException(e);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,11 +55,19 @@ public class AssignmentActivity extends BaseActivity implements AssignmentContra
     }
 
     private void initViews() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         srlNews = (SwipeRefreshLayout) findViewById(R.id.srlNews);
         rvNews = (RecyclerView) findViewById(R.id.rvNews);
         rvNews.setHasFixedSize(true);
         rvNews.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-
+        srlNews.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                assignmentPresenter.fetchAssignments(new SharedPreferenceManager(getApplicationContext()).getAccessToken());
+            }
+        });
     }
 
     @Override
@@ -72,6 +89,8 @@ public class AssignmentActivity extends BaseActivity implements AssignmentContra
         }
         assignmentAdapter = new AssignmentAdapter(assignments, this);
         rvNews.setAdapter(assignmentAdapter);
+        if (srlNews.isRefreshing())
+            srlNews.setRefreshing(false);
     }
 
     @Override

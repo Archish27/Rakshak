@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import com.markdevelopers.rakshak.R;
 import com.markdevelopers.rakshak.common.BaseActivity;
@@ -34,6 +35,15 @@ public class NgoActivity extends BaseActivity implements NgoContract.NgoView, Ng
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ngo);
@@ -44,6 +54,9 @@ public class NgoActivity extends BaseActivity implements NgoContract.NgoView, Ng
     }
 
     private void initViews() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         srlLayout = (SwipeRefreshLayout) findViewById(R.id.srlNgo);
         rvNgo = (RecyclerView) findViewById(R.id.rvNgo);
         rvNgo.setHasFixedSize(true);
@@ -51,6 +64,7 @@ public class NgoActivity extends BaseActivity implements NgoContract.NgoView, Ng
         srlLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                ngoPresenter.getNgo(new SharedPreferenceManager(getApplicationContext()).getAccessToken());
 
             }
         });
@@ -70,6 +84,8 @@ public class NgoActivity extends BaseActivity implements NgoContract.NgoView, Ng
         }
         NgoAdapter ngoAdapter = new NgoAdapter(ngos, this);
         rvNgo.setAdapter(ngoAdapter);
+        if(srlLayout.isRefreshing())
+            srlLayout.setRefreshing(false);
     }
 
     @Override

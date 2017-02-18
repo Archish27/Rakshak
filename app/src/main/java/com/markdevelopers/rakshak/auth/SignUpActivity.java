@@ -98,12 +98,10 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.SignU
                     boolean status = validate();
                     if (status)
                         presenter.signUpUser(new SharedPreferenceManager(getApplicationContext()).getDeviceToken(), etFName.getText().toString(), etLName.getText().toString(), etEmail.getText().toString(), etPhoneNo.getText().toString(), etPassword.getText().toString(), category);
-                    Log.d("Data", new SharedPreferenceManager(getApplicationContext()).getDeviceToken() + etFName.getText().toString() + etLName.getText().toString() + etEmail.getText().toString() + etPhoneNo.getText().toString() + etPassword.getText().toString() + category + sState.getSelectedItem().toString() + sCity.getSelectedItem().toString());
                 } else if (category == 3) {
                     boolean status = validateWorker();
                     if (status)
                         presenter.signUpWorker(new SharedPreferenceManager(getApplicationContext()).getDeviceToken(), etFName.getText().toString(), etLName.getText().toString(), etEmail.getText().toString(), etPhoneNo.getText().toString(), etPassword.getText().toString(), category, sState.getSelectedItem().toString(), sCity.getSelectedItem().toString());
-                    Log.d("Data", new SharedPreferenceManager(getApplicationContext()).getDeviceToken() + etFName.getText().toString() + etLName.getText().toString() + etEmail.getText().toString() + etPhoneNo.getText().toString() + etPassword.getText().toString() + category + sState.getSelectedItem().toString() + sCity.getSelectedItem().toString());
                 }
 
             }

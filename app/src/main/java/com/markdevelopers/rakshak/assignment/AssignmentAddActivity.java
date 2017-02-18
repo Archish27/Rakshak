@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatSpinner;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -59,6 +60,15 @@ public class AssignmentAddActivity extends BaseActivity implements AssignmentCon
     String path = "";
     AssignmentAddPresenter assignmentAddPresenter;
     int did;
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -124,6 +134,9 @@ public class AssignmentAddActivity extends BaseActivity implements AssignmentCon
     }
 
     private void initViews() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         sCategory = (AppCompatSpinner) findViewById(R.id.sCategory);
         etDescription = (BaseEditText) findViewById(R.id.etDescription);
         fabAdd = (FloatingActionButton) findViewById(R.id.fabAdd);
