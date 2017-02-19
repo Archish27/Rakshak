@@ -36,4 +36,11 @@ public interface NewsFeedRepository {
     Observable<NgoDetail> getNgoStories(String accessToken, int id);
 
     Observable<NgoDetail> getNgoContact(String accessToken, int id);
+
+    Observable<UserResponse> setNewsPostNoImage(String accessToken
+            , String title
+            , String description
+            , int did
+    );
+
 }

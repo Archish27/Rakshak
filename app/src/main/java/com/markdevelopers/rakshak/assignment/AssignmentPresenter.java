@@ -49,8 +49,8 @@ public class AssignmentPresenter implements AssignmentContract.AssignmentPresent
     }
 
     @Override
-    public void onSendPost(String accessToken, String title, String description, RequestBody postimage,int did) {
-        newsFeedRepository.setPost(accessToken, title, description, postimage,did)
+    public void onSendPost(String accessToken, String title, String description, RequestBody postimage, int did) {
+        newsFeedRepository.setPost(accessToken, title, description, postimage, did)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<UserResponse>() {
@@ -71,5 +71,31 @@ public class AssignmentPresenter implements AssignmentContract.AssignmentPresent
                             view.onSuccess(userResponse);
                     }
                 });
+    }
+
+    @Override
+    public void onSendPostNoImage(String accessToken, String title, String description, int did) {
+        newsFeedRepository.setNewsPostNoImage(accessToken, title, description, did)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Observer<UserResponse>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (view != null)
+                            view.onNetworkException(e);
+                    }
+
+                    @Override
+                    public void onNext(UserResponse userResponse) {
+                        if (view != null)
+                            view.onSuccess(userResponse);
+                    }
+                });
+
     }
 }

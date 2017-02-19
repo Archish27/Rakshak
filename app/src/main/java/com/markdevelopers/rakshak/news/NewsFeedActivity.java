@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.markdevelopers.rakshak.R;
 import com.markdevelopers.rakshak.common.BaseActivity;
@@ -34,7 +36,7 @@ public class NewsFeedActivity extends BaseActivity implements NewsFeedAdapter.Li
     SwipeRefreshLayout swipeRefreshLayout;
     NewsFeedAdapter adapter;
     ArrayList<NewsFeed> newsFeeds;
-
+    ProgressBar pgProgress;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
@@ -78,6 +80,7 @@ public class NewsFeedActivity extends BaseActivity implements NewsFeedAdapter.Li
 
         rvNewsFeed = (RecyclerView) findViewById(R.id.rvNews);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.srlNews);
+        pgProgress = (ProgressBar) findViewById(R.id.pgProgress);
         rvNewsFeed.setHasFixedSize(true);
         rvNewsFeed.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
@@ -142,6 +145,7 @@ public class NewsFeedActivity extends BaseActivity implements NewsFeedAdapter.Li
     @Override
     public void onNewsFeed(NewsFeedWrapper newsFeedWrapper) {
         populateView(newsFeedWrapper);
+        pgProgress.setVisibility(View.GONE);
     }
 
     @Override

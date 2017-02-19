@@ -54,7 +54,6 @@ public class MessengingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
         if (remoteMessage.getData().size() > 0) {
-
             try {
                 JSONObject json = new JSONObject(remoteMessage.getData().toString());
                 sendPushNotification(json);
@@ -66,33 +65,6 @@ public class MessengingService extends FirebaseMessagingService {
     /**
      * Method called on receiving a deleted message
      */
-//    @Override
-//    protected void onDeletedMessages(Context context, int total) {
-//        Log.i(TAG, "Received deleted messages notification");
-//        String message = getString(R.string.gcm_deleted, total);
-//        String title = "GCM";
-//        String status = "0";
-//        // displayMessage(context, message, title, status);
-//        // notifies user
-//        generateNotification(context, message, title, status);
-//    }
-
-    /**
-     * Method called on Error
-     */
-//    @Override
-//    public void onError(Context context, String errorId) {
-//        Log.i(TAG, "Received error: " + errorId);
-//        //  displayMessage(context, getString(R.string.gcm_error, errorId), "GCM", "0");
-//    }
-//
-//    @Override
-//    protected boolean onRecoverableError(Context context, String errorId) {
-//        // log message
-//        Log.i(TAG, "Received recoverable error: " + errorId);
-//        //  displayMessage(context, getString(R.string.gcm_recoverable_error,errorId), "GCM", "0");
-//        return super.onRecoverableError(context, errorId);
-//    }
     private void sendPushNotification(JSONObject json) {
         //optionally we can display the json into log
 

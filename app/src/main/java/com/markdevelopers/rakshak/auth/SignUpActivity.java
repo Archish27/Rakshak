@@ -62,7 +62,6 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.SignU
         sState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
                 presenter.getCities(sState.getSelectedItem().toString());
             }
 
@@ -82,7 +81,7 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.SignU
                         workerLayout.startAnimation(animFadeOut);
                         category = 4;
                         break;
-                    case "Worker":
+                    case "Volunteer":
                         workerLayout.startAnimation(animFadein);
                         category = 3;
                         break;
@@ -94,14 +93,19 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.SignU
         bSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (category == 4) {
                     boolean status = validate();
-                    if (status)
+                    if (status) {
+                        showProgressDialog();
                         presenter.signUpUser(new SharedPreferenceManager(getApplicationContext()).getDeviceToken(), etFName.getText().toString(), etLName.getText().toString(), etEmail.getText().toString(), etPhoneNo.getText().toString(), etPassword.getText().toString(), category);
+                    }
                 } else if (category == 3) {
                     boolean status = validateWorker();
-                    if (status)
+                    if (status) {
+                        showProgressDialog();
                         presenter.signUpWorker(new SharedPreferenceManager(getApplicationContext()).getDeviceToken(), etFName.getText().toString(), etLName.getText().toString(), etEmail.getText().toString(), etPhoneNo.getText().toString(), etPassword.getText().toString(), category, sState.getSelectedItem().toString(), sCity.getSelectedItem().toString());
+                    }
                 }
 
             }
@@ -231,18 +235,13 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.SignU
 
     @Override
     public void onSignUp(UserResponse userResponse) {
-
+        dismissProgressDialog();
         boolean status = userResponse.getSuccess();
-        String accessToken = userResponse.getAccessToken();
-
         if (status) {
             Toast.makeText(SignUpActivity.this, "Successful", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(SignUpActivity.this, MainActivity.class);
+            Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
             startActivity(i);
             finish();
-            new SharedPreferenceManager(getApplicationContext()).saveMainPage(1);
-            new SharedPreferenceManager(getApplicationContext()).saveAccessToken(accessToken);
-            new SharedPreferenceManager(getApplicationContext()).saveCategory(category);
         } else {
             Toast.makeText(SignUpActivity.this, "Failed", Toast.LENGTH_SHORT).show();
         }

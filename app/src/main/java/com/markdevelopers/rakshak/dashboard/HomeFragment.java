@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.markdevelopers.rakshak.R;
 import com.markdevelopers.rakshak.common.BaseFragment;
@@ -29,6 +30,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView rvHome;
     HomePresenter homePresenter;
+    ProgressBar pgProgress;
 
     @Override
     public void onNetworkException(Throwable e) {
@@ -40,6 +42,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         rvHome = (RecyclerView) view.findViewById(R.id.rvHome);
+        pgProgress = (ProgressBar) view.findViewById(R.id.pgProgress);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.srlHome);
         rvHome.setHasFixedSize(true);
         rvHome.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false));
@@ -69,6 +72,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
         rvHome.setAdapter(homeAdapter);
         if(swipeRefreshLayout.isRefreshing())
             swipeRefreshLayout.setRefreshing(false);
+        pgProgress.setVisibility(View.GONE);
     }
 
     @Override

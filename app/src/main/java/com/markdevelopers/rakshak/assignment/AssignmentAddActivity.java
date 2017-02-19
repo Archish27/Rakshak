@@ -57,7 +57,7 @@ public class AssignmentAddActivity extends BaseActivity implements AssignmentCon
     final private int MY_PERMISSIONS_REQUEST_CAMERA = 123;
     private static final int ADDRESS_CAMERA_IMAGE = 1850;
     private static final int ADDRESS_GALLERY_IMAGE = 1851;
-    String path = "";
+    String path = null;
     AssignmentAddPresenter assignmentAddPresenter;
     int did;
 
@@ -86,9 +86,13 @@ public class AssignmentAddActivity extends BaseActivity implements AssignmentCon
                 boolean status = validate();
                 if (status) {
                     showProgressDialog();
-                    File f = new File(path);
-                    RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), f);
-                    assignmentAddPresenter.onSendPost(new SharedPreferenceManager(getApplicationContext()).getAccessToken(), sCategory.getSelectedItem().toString(), etDescription.getText().toString(), reqFile, did);
+                    if (path != null) {
+                        File f = new File(path);
+                        RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), f);
+                        assignmentAddPresenter.onSendPost(new SharedPreferenceManager(getApplicationContext()).getAccessToken(), sCategory.getSelectedItem().toString(), etDescription.getText().toString(), reqFile, did);
+                    } else {
+                        assignmentAddPresenter.onSendPostNoImage(new SharedPreferenceManager(getApplicationContext()).getAccessToken(), sCategory.getSelectedItem().toString(), etDescription.getText().toString(), did);
+                    }
                 }
             }
         });

@@ -7,6 +7,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.markdevelopers.rakshak.R;
 import com.markdevelopers.rakshak.common.BaseActivity;
@@ -30,11 +32,13 @@ public class AssignmentActivity extends BaseActivity implements AssignmentContra
     RecyclerView rvNews;
     AssignmentAdapter assignmentAdapter;
     AssignmentPresenter assignmentPresenter;
+    ProgressBar pgProgress;
 
     @Override
     public void onNetworkException(Throwable e) {
         super.onNetworkException(e);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
@@ -57,8 +61,8 @@ public class AssignmentActivity extends BaseActivity implements AssignmentContra
     private void initViews() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         srlNews = (SwipeRefreshLayout) findViewById(R.id.srlNews);
+        pgProgress = (ProgressBar) findViewById(R.id.pgProgress);
         rvNews = (RecyclerView) findViewById(R.id.rvNews);
         rvNews.setHasFixedSize(true);
         rvNews.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
@@ -91,6 +95,7 @@ public class AssignmentActivity extends BaseActivity implements AssignmentContra
         rvNews.setAdapter(assignmentAdapter);
         if (srlNews.isRefreshing())
             srlNews.setRefreshing(false);
+        pgProgress.setVisibility(View.GONE);
     }
 
     @Override

@@ -37,7 +37,6 @@
         android:layout_alignLeft="@+id/username"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/username"
-        android:text="user@host.com"
         android:textColor="#fff" />
 
 </RelativeLayout>

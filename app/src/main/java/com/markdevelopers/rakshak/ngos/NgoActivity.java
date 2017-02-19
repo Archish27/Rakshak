@@ -7,6 +7,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.markdevelopers.rakshak.R;
 import com.markdevelopers.rakshak.common.BaseActivity;
@@ -28,6 +30,7 @@ public class NgoActivity extends BaseActivity implements NgoContract.NgoView, Ng
     SwipeRefreshLayout srlLayout;
     RecyclerView rvNgo;
     NgoPresenter ngoPresenter;
+    ProgressBar pgProgress;
 
     @Override
     public void onNetworkException(Throwable e) {
@@ -58,6 +61,7 @@ public class NgoActivity extends BaseActivity implements NgoContract.NgoView, Ng
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         srlLayout = (SwipeRefreshLayout) findViewById(R.id.srlNgo);
+        pgProgress = (ProgressBar) findViewById(R.id.pgProgress);
         rvNgo = (RecyclerView) findViewById(R.id.rvNgo);
         rvNgo.setHasFixedSize(true);
         rvNgo.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
@@ -84,8 +88,9 @@ public class NgoActivity extends BaseActivity implements NgoContract.NgoView, Ng
         }
         NgoAdapter ngoAdapter = new NgoAdapter(ngos, this);
         rvNgo.setAdapter(ngoAdapter);
-        if(srlLayout.isRefreshing())
+        if (srlLayout.isRefreshing())
             srlLayout.setRefreshing(false);
+        pgProgress.setVisibility(View.GONE);
     }
 
     @Override

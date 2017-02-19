@@ -68,4 +68,12 @@ public interface NewsFeedRestService {
             , @Query("did") int did
     );
 
+    @FormUrlEncoded
+    @POST("disaster/update/new")
+    Observable<UserResponse> setNewsPostNoImage(@Field("accessToken") String accessToken
+            , @Field("title") String title
+            , @Field("description") String description
+            , @Field("did") int did
+    );
+
 }

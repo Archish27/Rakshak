@@ -18,5 +18,6 @@ public interface AssignmentContract {
     interface AssignmentPresenter{
         void fetchAssignments(String accessToken);
         void onSendPost(String accessToken, String title, String description, RequestBody postimage,int did);
+        void onSendPostNoImage(String accessToken, String title, String description,int did);
     }
 }

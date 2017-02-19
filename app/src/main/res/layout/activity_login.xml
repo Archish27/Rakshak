@@ -67,15 +67,6 @@
                 android:clickable="true"
                 android:text="@string/sign_up" />
 
-            <com.markdevelopers.rakshak.ui.widgets.BaseTextView
-                android:id="@+id/tvForgotPassword"
-                style="@style/SecondaryText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:text="@string/forgot_password" />
         </RelativeLayout>
 
         <com.markdevelopers.rakshak.ui.widgets.BaseButton

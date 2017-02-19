@@ -52,4 +52,29 @@ public class AssignmentAddPresenter implements AssignmentContract.AssignmentPres
                     }
                 });
     }
+
+    @Override
+    public void onSendPostNoImage(String accessToken, String title, String description, int did) {
+        newsFeedRepository.setNewsPostNoImage(accessToken, title, description,did)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<UserResponse>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (view != null)
+                            view.onNetworkException(e);
+                    }
+
+                    @Override
+                    public void onNext(UserResponse userResponse) {
+                        if (view != null)
+                            view.onSuccess(userResponse);
+                    }
+                });
+    }
 }

@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.markdevelopers.rakshak.assignment.AssignmentActivity;
@@ -91,6 +92,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         //How to change elements in the header programatically
         View headerView = navigationView.getHeaderView(0);
+        TextView role = (TextView) headerView.findViewById(R.id.email);
+        if (new SharedPreferenceManager(getApplicationContext()).getCategory() == 3)
+            role.setText(getString(R.string.worker));
+        else if (new SharedPreferenceManager(getApplicationContext()).getCategory() == 4)
+            role.setText(getString(R.string.user));
 
         navigationView.setNavigationItemSelectedListener(this);
         if (new SharedPreferenceManager(getApplicationContext()).getCategory() == 3)
@@ -166,4 +172,5 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             Toast.makeText(MainActivity.this, "Oops something went wrong.", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

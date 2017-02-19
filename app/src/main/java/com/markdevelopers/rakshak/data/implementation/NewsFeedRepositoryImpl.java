@@ -79,5 +79,10 @@ public class NewsFeedRepositoryImpl implements NewsFeedRepository {
         return newsFeedRestService.getNgoContact(accessToken, id);
     }
 
+    @Override
+    public Observable<UserResponse> setNewsPostNoImage(String accessToken, String title, String description, int did) {
+        return newsFeedRestService.setNewsPostNoImage(accessToken, title, description, did);
+    }
+
 
 }

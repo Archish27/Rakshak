@@ -7,6 +7,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.markdevelopers.rakshak.R;
 import com.markdevelopers.rakshak.common.BaseActivity;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
  */
 
 public class SubscriptionsActivity extends BaseActivity implements SubscriptionAdapter.LikeItemUpdateListener, SubscriptionContract.NewsFeedActivityView {
-
+    ProgressBar pgProgress;
     RecyclerView rvNewsFeed;
     SubscriptionPresenter newsFeedActivityPresenter;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -54,6 +56,7 @@ public class SubscriptionsActivity extends BaseActivity implements SubscriptionA
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         rvNewsFeed = (RecyclerView) findViewById(R.id.rvNews);
+        pgProgress = (ProgressBar) findViewById(R.id.pgProgress);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.srlNews);
         rvNewsFeed.setHasFixedSize(true);
         rvNewsFeed.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
@@ -107,6 +110,7 @@ public class SubscriptionsActivity extends BaseActivity implements SubscriptionA
     @Override
     public void onSubscribe(SubscribeWrapper subscribeWrapper) {
         populateView(subscribeWrapper);
+        pgProgress.setVisibility(View.GONE);
     }
 
     @Override
