@@ -66,13 +66,13 @@ public class LoginPresenter implements LoginContract.LoginPresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        if(view!=null)
+                        if (view != null)
                             view.onNetworkException(e);
                     }
 
                     @Override
                     public void onNext(UserResponse userResponse) {
-                        if(view!=null)
+                        if (view != null)
                             view.onLogout(userResponse);
                     }
                 });
