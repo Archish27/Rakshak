@@ -8,3 +8,7 @@ This information will be sent as notifications to all the users who have subscri
 It also contains information about different NGOs, emergency contact numbers, etc. which will help the user in critical times.
 
 This app, once implemented by an organisation or the Government, will help in responding quickly to any type of incident, thus saving lives and helping people.
+
+<a href="https://play.google.com/store/apps/details?id=com.markdevelopers.rakshak">
+  <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
+</a>
